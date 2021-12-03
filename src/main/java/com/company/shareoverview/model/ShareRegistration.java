@@ -2,11 +2,17 @@ package com.company.shareoverview.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Builder
 @Getter
@@ -14,6 +20,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "ShareRegistrations")
+@EntityListeners(AuditingEntityListener.class)
 public class ShareRegistration {
 
     @Id
@@ -25,7 +32,7 @@ public class ShareRegistration {
     private Long id;
 
 
-    @JoinColumn(name = "share_data_id")
+    @JoinColumn(name = "share_id")
     @ManyToOne
     @JsonBackReference
     private ShareData acquiredShareData;
@@ -52,11 +59,10 @@ public class ShareRegistration {
     @NotNull(message = "Stock acquirer employee ID is mandatory")
     private Long acquirerEmployeeId;
 
-    //TODO fix date saving in DB
-/*    @Column(
+    @Column(
             name = "date",
             nullable = false
     )
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate acquisitionDate = LocalDate.now();*/
+    @CreatedDate
+    private Date acquisitionDate = new Date();
 }
