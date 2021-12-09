@@ -1,6 +1,10 @@
 package com.company.shareoverview.service;
 
+import com.company.shareoverview.controller.response.ShareRegistrationAcquiredByMonthResponse;
+import com.company.shareoverview.controller.response.ShareRegistrationAmountByMonthResponse;
 import com.company.shareoverview.dto.ShareRegistrationDTO;
+import com.company.shareoverview.dto.mapper.ShareRegistrationAcquiredByMonthResponseMapper;
+import com.company.shareoverview.dto.mapper.ShareRegistrationAmountByMonthResponseMapper;
 import com.company.shareoverview.dto.mapper.ShareRegistrationModelMapper;
 import com.company.shareoverview.model.ShareRegistration;
 import com.company.shareoverview.repository.ShareRegistrationRepository;
@@ -24,5 +28,17 @@ public class ShareRegistrationService {
                 .collect(Collectors.toList());
 
         shareRegistrationRepository.saveAll(shareRegistrations);
+    }
+
+    public List<ShareRegistrationAmountByMonthResponse> getAmountSpentByMonth() {
+        return shareRegistrationRepository.getTotalSpentByMonth().stream()
+                .map(ShareRegistrationAmountByMonthResponseMapper::mapToResponse)
+                .collect(Collectors.toList());
+    }
+
+    public List<ShareRegistrationAcquiredByMonthResponse> getAcquiringRecordsByMont() {
+        return shareRegistrationRepository.getAcquiringRecordsByMonth().stream()
+        .map(ShareRegistrationAcquiredByMonthResponseMapper::mapToResponse)
+                .collect(Collectors.toList());
     }
 }
