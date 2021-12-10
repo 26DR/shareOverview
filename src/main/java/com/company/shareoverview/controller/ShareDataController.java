@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("unchecked")
 @RestController
 @RequestMapping(value = "/api/v1/share-data")
 @AllArgsConstructor
@@ -34,7 +35,7 @@ public class ShareDataController {
             throw new ApiRequestException("JSON file is required for this endpoint.");
         }
 
-        List<ShareDataRequest> shareDataRequests = ShareDataRequestUtil.getShareDataRequestListFromFiles(files);
+        List<ShareDataRequest> shareDataRequests = (List<ShareDataRequest>) (Object) ShareDataRequestUtil.getShareDataRequestListFromFiles(files, ShareDataRequest.class);
         List<ShareDataDTO> shareDataDTOs = requestToDTO(shareDataRequests);
 
         shareDataService.createShareDataRecord(shareDataDTOs);
