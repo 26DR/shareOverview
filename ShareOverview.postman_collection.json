@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "57a2e276-e3c4-4537-adc6-e8d9ba4112dc",
+		"name": "ShareOverview",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save Share Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"companyName\":\"Pductivity\",\r\n        \"shareName\":\"PDTY\",\r\n        \"isinCode\":\" US0004026250\",\r\n        \"country\":\"USA\",\r\n        \"economicActivity\":\"Software\"\r\n    },\r\n    {\r\n        \"companyName\":\"Namify\",\r\n        \"shareName\":\"NMFY\",\r\n        \"isinCode\":\" US5004023250\",\r\n        \"country\":\"USA\",\r\n        \"economicActivity\":\"Software\"\r\n    }\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/share-data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"share-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Share Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/share-data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"share-data"
+					]
+				},
+				"description": "Get All Share Data"
+			},
+			"response": []
+		},
+		{
+			"name": "Save Share Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"acquiredShareData\": {\r\n            \"id\": 1\r\n        },\r\n        \"pricePerShare\": \"3.35\",\r\n        \"amountOfSharesAcquired\": \" 3\",\r\n        \"acquirerEmployeeId\": \"1451\"\r\n    },\r\n    {\r\n        \"acquiredShareData\": {\r\n            \"id\": 2\r\n        },\r\n        \"pricePerShare\": \"5.35\",\r\n        \"amountOfSharesAcquired\": \" 37\",\r\n        \"acquirerEmployeeId\": \"451\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/share-registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"share-registration"
+					]
+				},
+				"description": "Save Share Registration"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Share Registration Amount Spent By Month",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/share-registration/amount-by-month",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"share-registration",
+						"amount-by-month"
+					]
+				},
+				"description": "Get Share Registration Amount Spent By Month"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Share Registration Acquired By Month",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/share-registration/acquired-by-month",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"share-registration",
+						"acquired-by-month"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
