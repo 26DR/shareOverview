@@ -16,8 +16,6 @@ import java.util.List;
 @Entity(name = "ShareData")
 public class ShareData {
 
-    //TODO Move the validation constraints to DTO if possible
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(

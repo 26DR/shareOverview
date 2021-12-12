@@ -18,13 +18,13 @@ public class ApiExceptionHandler{
 
     @ExceptionHandler(value = {ApiRequestException.class})
     public ResponseEntity<Object> handleApiRequestException(ApiRequestException exception) {
-        ApiException apiException = ApiException.builder()
+        ApiExceptionResponse apiExceptionResponse = ApiExceptionResponse.builder()
                 .message(List.of(exception.getMessage()))
                 .httpStatus(HttpStatus.BAD_REQUEST)
                 .timestamp(ZonedDateTime.now(ZoneId.of("Z")))
                 .build();
 
-        return new ResponseEntity<>(apiException, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(apiExceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = {ConstraintViolationException.class})
@@ -33,23 +33,23 @@ public class ApiExceptionHandler{
                 .map(ConstraintViolation::getMessage)
                 .collect(Collectors.toList());
 
-        ApiException apiException = ApiException.builder()
+        ApiExceptionResponse apiExceptionResponse = ApiExceptionResponse.builder()
                 .message(constraintViolationMessages)
                 .httpStatus(HttpStatus.BAD_REQUEST)
                 .timestamp(ZonedDateTime.now(ZoneId.of("Z")))
                 .build();
 
-        return new ResponseEntity<>(apiException, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(apiExceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = {MissingServletRequestPartException.class})
     public ResponseEntity<Object> handleMissingServletRequestPartException(MissingServletRequestPartException exception) {
-        ApiException apiException = ApiException.builder()
+        ApiExceptionResponse apiExceptionResponse = ApiExceptionResponse.builder()
                 .message(List.of(exception.getMessage()))
                 .httpStatus(HttpStatus.BAD_REQUEST)
                 .timestamp(ZonedDateTime.now(ZoneId.of("Z")))
                 .build();
 
-        return new ResponseEntity<>(apiException, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(apiExceptionResponse, HttpStatus.BAD_REQUEST);
     }
 }

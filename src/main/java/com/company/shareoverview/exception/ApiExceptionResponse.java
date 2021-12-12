@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @Data
 @AllArgsConstructor
-public class ApiException {
+class ApiExceptionResponse {
 
     private final List<String> message;
     private final HttpStatus httpStatus;
